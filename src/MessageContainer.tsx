@@ -141,10 +141,10 @@ export default class MessageContainer<
     infiniteScroll: PropTypes.bool,
   }
 
-  keyboardWillShowListner: any;
-  keyboardDidShowListner: any;
-  keyboardWillHideListner: any;
-  keyboardDidHideListner: any;
+  keyboardWillShowListner: any
+  keyboardDidShowListner: any
+  keyboardWillHideListner: any
+  keyboardDidHideListner: any
 
   state = {
     showScrollBottom: false,
@@ -181,18 +181,30 @@ export default class MessageContainer<
   attachKeyboardListeners = () => {
     const { invertibleScrollViewProps: invertibleProps } = this.props
     if (invertibleProps) {
-      this.keyboardWillShowListner = Keyboard.addListener('keyboardWillShow', invertibleProps.onKeyboardWillShow);
-      this.keyboardDidShowListner = Keyboard.addListener('keyboardDidShow', invertibleProps.onKeyboardDidShow);
-      this.keyboardWillHideListner = Keyboard.addListener('keyboardWillHide', invertibleProps.onKeyboardWillHide);
-      this.keyboardDidHideListner = Keyboard.addListener('keyboardDidHide', invertibleProps.onKeyboardDidHide);
+      this.keyboardWillShowListner = Keyboard.addListener(
+        'keyboardWillShow',
+        invertibleProps.onKeyboardWillShow,
+      )
+      this.keyboardDidShowListner = Keyboard.addListener(
+        'keyboardDidShow',
+        invertibleProps.onKeyboardDidShow,
+      )
+      this.keyboardWillHideListner = Keyboard.addListener(
+        'keyboardWillHide',
+        invertibleProps.onKeyboardWillHide,
+      )
+      this.keyboardDidHideListner = Keyboard.addListener(
+        'keyboardDidHide',
+        invertibleProps.onKeyboardDidHide,
+      )
     }
   }
 
   detachKeyboardListeners = () => {
-    this.keyboardWillShowListner?.remove();
-    this.keyboardDidShowListner?.remove();
-    this.keyboardWillHideListner?.remove();
-    this.keyboardDidHideListner?.remove();
+    this.keyboardWillShowListner?.remove()
+    this.keyboardDidShowListner?.remove()
+    this.keyboardWillHideListner?.remove()
+    this.keyboardDidHideListner?.remove()
   }
 
   renderTypingIndicator = () => {
