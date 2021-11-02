@@ -141,6 +141,11 @@ export default class MessageContainer<
     infiniteScroll: PropTypes.bool,
   }
 
+  keyboardWillShowListner: any;
+  keyboardDidShowListner: any;
+  keyboardWillHideListner: any;
+  keyboardDidHideListner: any;
+
   state = {
     showScrollBottom: false,
   }
@@ -176,37 +181,18 @@ export default class MessageContainer<
   attachKeyboardListeners = () => {
     const { invertibleScrollViewProps: invertibleProps } = this.props
     if (invertibleProps) {
-      Keyboard.addListener(
-        'keyboardWillShow',
-        invertibleProps.onKeyboardWillShow,
-      )
-      Keyboard.addListener('keyboardDidShow', invertibleProps.onKeyboardDidShow)
-      Keyboard.addListener(
-        'keyboardWillHide',
-        invertibleProps.onKeyboardWillHide,
-      )
-      Keyboard.addListener('keyboardDidHide', invertibleProps.onKeyboardDidHide)
+      this.keyboardWillShowListner = Keyboard.addListener('keyboardWillShow', invertibleProps.onKeyboardWillShow);
+      this.keyboardDidShowListner = Keyboard.addListener('keyboardDidShow', invertibleProps.onKeyboardDidShow);
+      this.keyboardWillHideListner = Keyboard.addListener('keyboardWillHide', invertibleProps.onKeyboardWillHide);
+      this.keyboardDidHideListner = Keyboard.addListener('keyboardDidHide', invertibleProps.onKeyboardDidHide);
     }
   }
 
   detachKeyboardListeners = () => {
-    const { invertibleScrollViewProps: invertibleProps } = this.props
-    Keyboard.removeListener(
-      'keyboardWillShow',
-      invertibleProps.onKeyboardWillShow,
-    )
-    Keyboard.removeListener(
-      'keyboardDidShow',
-      invertibleProps.onKeyboardDidShow,
-    )
-    Keyboard.removeListener(
-      'keyboardWillHide',
-      invertibleProps.onKeyboardWillHide,
-    )
-    Keyboard.removeListener(
-      'keyboardDidHide',
-      invertibleProps.onKeyboardDidHide,
-    )
+    this.keyboardWillShowListner?.remove();
+    this.keyboardDidShowListner?.remove();
+    this.keyboardWillHideListner?.remove();
+    this.keyboardDidHideListner?.remove();
   }
 
   renderTypingIndicator = () => {
