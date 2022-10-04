@@ -109,5 +109,5 @@ CustomActions.propTypes = {
   renderIcon: PropTypes.func,
   containerStyle: ViewPropTypes.style,
   wrapperStyle: ViewPropTypes.style,
-  iconTextStyle: Text.propTypes.style,
+  // iconTextStyle: Text.propTypes.style,
 }
