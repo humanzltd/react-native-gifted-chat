@@ -316,9 +316,9 @@ Bubble.propTypes = {
     left: ViewPropTypes.style,
     right: ViewPropTypes.style,
   }),
-  messageTextStyle: Text.propTypes.style,
-  usernameStyle: Text.propTypes.style,
-  tickStyle: Text.propTypes.style,
+  // messageTextStyle: Text.propTypes.style,
+  // usernameStyle: Text.propTypes.style,
+  // tickStyle: Text.propTypes.style,
   containerToNextStyle: PropTypes.shape({
     left: ViewPropTypes.style,
     right: ViewPropTypes.style,
